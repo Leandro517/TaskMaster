@@ -4,8 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskMaster</title>
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-    <h1>Seja Bem-Vindo ao TaskMaster</h1>
+
+    <div class="container">
+        <h1>Seja Bem-Vindo ao TaskMaster</h1>
+    </div>
+    
+    <form id="task-form">
+        <input type="text" id="task-input" placeholder="Digite sua tarefa" required />
+        <select id="priority">
+            <option value="baixa">Baixa</option>
+            <option value="media">Média</option>
+            <option value="alta">Alta</option>
+        </select>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <div class="filters">
+        <button data-filter="todas">Todas</button>
+        <button data-filter="pendentes">Pendentes</button>
+        <button data-filter="concluidas">Concluídas</button>
+    </div>
+
+    <ul id="task-list"></ul>
 </body>
 </html>
