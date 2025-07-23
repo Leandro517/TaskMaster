@@ -21,3 +21,29 @@ h1 {
     margin-bottom: 1rem;
     color: #333;
 }
+
+li {
+    background: #eee;
+    padding: 0.7rem;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+}
+
+li.done {
+    background-color: #c8f7c5;
+    text-decoration: line-through;
+}
+
+.baixa {
+    border-left: 5px solid green;
+}
+
+.media {
+    border-left: 5px solid orange;
+}
+
+.alta {
+    border-left: 5px solid red;
+}
