@@ -6,7 +6,7 @@ const prioritySelect = document.getElementById('priority');
 const taskList = document.getElementById('task-list');
 const filterButtons = document.querySelectorAll('.filters button');
 
-let tasks = [];
+let tasks = loadTasks(); // Carrega as tarefas do localStorage
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -17,6 +17,7 @@ form.addEventListener('submit', function (e) {
   if (text !== '') {
     tasks.push({ text, priority, done: false });
     taskInput.value = '';
+    saveTasks();
     renderTasks();
   }
 });
@@ -34,11 +35,12 @@ function renderTasks(filter = 'todas') {
     const li = document.createElement('li');
     li.textContent = task.text;
 
-    li.classList.add(task.priority); // baixa, media, alta
+    li.classList.add(task.priority);
     if (task.done) li.classList.add('done');
 
     li.addEventListener('click', () => {
       tasks[index].done = !tasks[index].done;
+      saveTasks();
       renderTasks(filter);
     });
 
@@ -53,4 +55,13 @@ filterButtons.forEach(button => {
   });
 });
 
-renderTasks(); // Exibe a lista inicialmente
+function saveTasks() {
+  localStorage.setItem('taskmaster-tasks', JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  const stored = localStorage.getItem('taskmaster-tasks');
+  return stored ? JSON.parse(stored) : [];
+}
+
+renderTasks();
